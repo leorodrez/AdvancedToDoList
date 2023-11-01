@@ -171,3 +171,15 @@ select{
     text-decoration: line-through;
     font-style: italic;
 }
+
+.error{
+    border: 2px solid red;
+}
+
+.alert{
+    color: red;
+    font-size: small;
+    margin-left: .3rem;
+    margin-top: .4rem;
+    display: block;
+}
