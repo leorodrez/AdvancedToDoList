@@ -63,6 +63,8 @@ const updateToDo = (text) => {
             toDoTitle.innerText = text;
         }
     })
+
+    localStorage.setItem('todo', JSON.stringify(todos))
 }
 
 // Events
@@ -111,3 +113,6 @@ editForm.addEventListener('submit', (e) => {
 
     toggleForms()
 })  
+
+
+
