@@ -30,7 +30,7 @@
                 </div>
             </form>
 
-            <form action="" id="edit-form">
+            <form action="" id="edit-form" class="hide">
                 <p>Edit your task:</p>
                 <div class="form-control">
                     <input type="text" id="edit-input">
@@ -38,10 +38,11 @@
                         <i class="fa-solid fa-check-double"></i>
                     </button>
                 </div>
+                <button id="cancel-edit-btn">
+                    Cancel
+                </button>
             </form>
-            <button id="cancel-edit-btn">
-                Cancel
-            </button>
+
             <div id="toolbar">
                 <div id="search">
                     <h4>Search:</h4>
@@ -76,7 +77,7 @@
                     </button>
                 </div>
                 <div class="todo">
-                    <h3>StudyJavascript</h3>
+                    <h3>Study Javascript</h3>
                     <button class="finish-todo">
                         <i class="fa-solid fa-check"></i>
                     </button>
