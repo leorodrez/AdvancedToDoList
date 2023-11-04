@@ -55,21 +55,21 @@ function addingTasks(e){
 
 
     // LOCAL STORAGE
-    localStorage.setItem('tasks', JSON.stringify(obj))
-    const tasks = localStorage.getItem('tasks')
-    listTasks.push(tasks)
-    console.log(listTasks)
+    // localStorage.setItem('tasks', JSON.stringify(obj))
+    // const tasks = localStorage.getItem('tasks')
+    // listTasks.push(tasks)
+    // console.log(listTasks)
 
 
-    let myObject = {...listTasks}
+    // let myObject = {...listTasks}
 
-    const obj2 = [{
-        tasks: myObject
-    }]
+    // const obj2 = [{
+    //     tasks: myObject
+    // }]
 
-    console.log(myObject)
+    // console.log(myObject)
 
-    localStorage.setItem('ListTasks', JSON.stringify(myObject))
+    // localStorage.setItem('ListTasks', JSON.stringify(myObject))
 
 }
 
