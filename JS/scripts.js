@@ -85,14 +85,19 @@ function savingTasks(){
     const todosJSON = JSON.stringify(tasksList)
     localStorage.setItem('tasks', todosJSON)
     // console.log(todosJSON)
-    
+
+
+    const savedClasses = document.querySelectorAll('.todo')
+    savedClasses.forEach((e) => {
+        console.log(e.className)
+    })
 }
 
 function savedTasks(){
     const savedTasks = localStorage.getItem('tasks')
-    console.log(savedTasks)
+    // console.log(savedTasks)
     const tasksList = JSON.parse(savedTasks)
-    console.log(tasksList)
+    // console.log(tasksList)
 
     for(let task of tasksList){
         toDoList.innerHTML += `
@@ -110,6 +115,7 @@ function savedTasks(){
             </div>
             `
     }
+
 }
 
 
