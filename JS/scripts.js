@@ -13,7 +13,6 @@ let oldInputValue
 
 
 // Functions
-// savingTasks()
 
 function addingTasks(e){
     e.preventDefault()
@@ -86,11 +85,11 @@ function savingTasks(){
     localStorage.setItem('tasks', todosJSON)
     // console.log(todosJSON)
 
+    // const savedClasses = document.querySelectorAll('.todo')
+    // savedClasses.forEach((e) => {
+    //     console.log(e.className)
+    // })
 
-    const savedClasses = document.querySelectorAll('.todo')
-    savedClasses.forEach((e) => {
-        console.log(e.className)
-    })
 }
 
 function savedTasks(){
@@ -99,9 +98,11 @@ function savedTasks(){
     const tasksList = JSON.parse(savedTasks)
     // console.log(tasksList)
 
+    let i = 0
+
     for(let task of tasksList){
         toDoList.innerHTML += `
-            <div class="todo">
+            <div class="todo" id='${i}'>
                 <h3>${task}</h3>
                 <button class="finish-todo">
                     <i class="fa-solid fa-check"></i>
@@ -114,7 +115,18 @@ function savedTasks(){
                 </button>
             </div>
             `
+
+            i++
     }
+}
+
+function saveClasses(){
+    const listClasses = []
+    const savedClasses = document.querySelectorAll('.todo')
+    savedClasses.forEach((e) => {
+        listClasses.push(e.className)
+        // e.setAttribute('class', 'todo done')
+    })
 
 }
 
@@ -196,4 +208,4 @@ filter.addEventListener('click', (e) => {
 
 
 savedTasks()
-
+saveClasses()
