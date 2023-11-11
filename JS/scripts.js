@@ -13,6 +13,8 @@ let oldInputValue
 
 
 // Functions
+// savingTasks()
+
 function addingTasks(e){
     e.preventDefault()
 
@@ -46,6 +48,8 @@ function addingTasks(e){
     }
 
     toDoInput.value = ''
+
+    savingTasks()
 }
 
 const toggleForms = () => {
@@ -70,28 +74,45 @@ const updateToDo = (text) => {
 
 function savingTasks(){
     const todos = document.querySelectorAll('#todo-list .todo h3')
-    const listaTarefas = []
+    const tasksList = []
 
     for(let tarefa of todos){
         let taskContent = tarefa.textContent
-        listaTarefas.push(taskContent)
+        tasksList.push(taskContent)
     }
 
-    console.log(listaTarefas)
-    const todosJSON = JSON.stringify(listaTarefas)
-    localStorage.setItem('tarefas', listaTarefas)
+    // console.log(tasksList)
+    const todosJSON = JSON.stringify(tasksList)
+    localStorage.setItem('tasks', todosJSON)
+    // console.log(todosJSON)
     
 }
 
 function savedTasks(){
-    let savedTasks = localStorage.getItem('tarefas')
-    savedTasks = JSON.parse(savedTasks)
+    const savedTasks = localStorage.getItem('tasks')
+    console.log(savedTasks)
+    const tasksList = JSON.parse(savedTasks)
+    console.log(tasksList)
 
-    addingTasks
-    
+    for(let task of tasksList){
+        toDoList.innerHTML += `
+            <div class="todo">
+                <h3>${task}</h3>
+                <button class="finish-todo">
+                    <i class="fa-solid fa-check"></i>
+                </button>
+                <button class="edit-todo">
+                    <i class="fa-solid fa-pen"></i>
+                </button>
+                <button class="remove-todo">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            `
+    }
 }
 
-savingTasks()
+
 
 // Events
 toDoForm.onsubmit = addingTasks
@@ -120,12 +141,16 @@ document.addEventListener('click', (e) => {
         oldInputValue = toDoTitle
     }
 
+    savingTasks()
+
 })
 
 cancelEditBtn.addEventListener('click', (e) => {
     e.preventDefault()
 
     toggleForms()
+
+    savingTasks()
 })
 
 
@@ -139,6 +164,8 @@ editForm.addEventListener('submit', (e) => {
     }
 
     toggleForms()
+
+    savingTasks()
 })  
 
 
@@ -157,6 +184,10 @@ filter.addEventListener('click', (e) => {
         })
 
     }
+
+    savingTasks()
 })
 
+
+savedTasks()
 
