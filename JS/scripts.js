@@ -11,7 +11,6 @@ const submitBtn = document.querySelector('#submit-btn')
 const filter = document.querySelector('#filter')
 let oldInputValue
 
-const listTasks = []
 
 // Functions
 function addingTasks(e){
@@ -47,30 +46,6 @@ function addingTasks(e){
     }
 
     toDoInput.value = ''
-
-    const obj = [{
-        tasks: inputValue
-    }]
-
-
-
-    // LOCAL STORAGE
-    // localStorage.setItem('tasks', JSON.stringify(obj))
-    // const tasks = localStorage.getItem('tasks')
-    // listTasks.push(tasks)
-    // console.log(listTasks)
-
-
-    // let myObject = {...listTasks}
-
-    // const obj2 = [{
-    //     tasks: myObject
-    // }]
-
-    // console.log(myObject)
-
-    // localStorage.setItem('ListTasks', JSON.stringify(myObject))
-
 }
 
 const toggleForms = () => {
@@ -92,6 +67,31 @@ const updateToDo = (text) => {
     })
 
 }
+
+function savingTasks(){
+    const todos = document.querySelectorAll('#todo-list .todo h3')
+    const listaTarefas = []
+
+    for(let tarefa of todos){
+        let taskContent = tarefa.textContent
+        listaTarefas.push(taskContent)
+    }
+
+    console.log(listaTarefas)
+    const todosJSON = JSON.stringify(listaTarefas)
+    localStorage.setItem('tarefas', listaTarefas)
+    
+}
+
+function savedTasks(){
+    let savedTasks = localStorage.getItem('tarefas')
+    savedTasks = JSON.parse(savedTasks)
+
+    addingTasks
+    
+}
+
+savingTasks()
 
 // Events
 toDoForm.onsubmit = addingTasks
